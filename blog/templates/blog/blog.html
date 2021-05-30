@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+{% extends "denkmalgeschutztelofts/base.html" %}
+{% load static %}
+
+
+{% block title %}Blog{% endblock %}
+
+{% block priority_css %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "blog/fonts/icomoon/style.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/jquery-ui.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/owl.theme.default.min.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/bootstrap-datepicker.css" %}">
+    <link rel="stylesheet" href="{% static "blog/fonts/flaticon/font/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/aos.css" %}">
+
+    <link rel="stylesheet" href="{% static "blog/css/style.css" %}">
+{% endblock %}
+
+{% block body %}
+<div class="bckgrnd-black sticky-nav-margin" style="text-align:left;background-image:url('{% static "denkmalgeschutztelofts/images/project1.jpg" %}');background-size: cover;background-repeat: no-repeat;">
+    <div class="blog-banner" style="background-color: #000; padding: 5px 25px 10px 25px;">Neueste Beiträge
+    </div>
+</div>
+    <div class="site-section">
+        
+
+        <div class="container-fluid contenedor text-center">
+            <div class="text-center">
+                {% if posts %}
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto" onclick="location.href='{% url "blog:post" post.slug %}'">
+                        <div class="ver_mas text-center" style="vertical-align: middle;" >
+                            <p>{{ post.description }}</p>
+{#                            <p>{{ post.date|date:"SHORT_DATE_FORMAT" }}</p>#}
+                        </div>
+                        <article class="text-left">
+                            <h2>{{ post.title }}</h2>
+                        </article>
+                        {% if post.cover_image %}                                       
+                            <img src="{{ post.cover_image.url }}" alt="Image">
+                        {% else %}
+                            <img src="https://img-aws.ehowcdn.com/400x400/ds-img.studiod.com/Half_Dome_from_Glacier_Point0_1.jpg" alt="">
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>     
+                {% endif %}                  
+            </div>
+        </div>
+
+{#        <div class="container">#}
+{#            <div class="row mb-5">#}
+{#                <div class="col-12">#}
+{#                    <h1>Lesen Sie unsere Nachrichten#}
+{#                    </h1>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% if posts %}#}
+{#            <div class="row">#}
+{#                {% for post in posts %}#}
+{#                <div class="col-lg-4 mb-4">#}
+{#                    <div class="center">#}
+{#                        <div class="property-card" onclick="location.href='{% url "blog:post" post.slug post.pk %}'">#}
+{#                          <a href="{% url "blog:post" post.slug post.pk %}">#}
+{#                            {% if post.cover_image %}#}
+{#                                 <div class="property-image" style="background-image:url('{{ post.cover_image.url }}');">#}
+{#                            {% else %}#}
+{#                                    <div class="property-image" style="background-image:url('{% static "blog/images/img_1.jpg" %}');">#}
+{#                            {% endif %}#}
+{#                              <div class="property-image-title">#}
+{#                              </div>#}
+{#                            </div></a>#}
+{#                          <div class="property-description">#}
+{#                            <h1 class="blog-title"> {{ post.title }} </h1>#}
+{#                            <p>{{ post.content|safe|truncatechars_html:20 }}</p>#}
+{#                            <button onclick="location.href='{% url "blog:post" post.slug post.pk %}'" type="button" class="projekt-btn">MEHR LESEN</button>#}
+{#                          </div>#}
+{#                          <a href="#">#}
+{#                            <div class="property-social-icons-blog">#}
+{#                            </div>#}
+{#                          </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+
+        <div class="container-fluid dsnone" style="background-color: #FEF2DA;" >
+ <div class="row project-row" style="height: 450px;">
+     <div class="domino2" data-aos="zoom-in" style="height: 450px;">
+         <img src="{% static "denkmalgeschutztelofts/images/kaiser3.png" %}" class="img-fluid project-image">
+     </div>
+     <div class="domino1 background-grey" >
+         <h2 class="table-hdr">Highlights
+         </h2>
+         <table class="table borderless" >
+             <hr class="hr-line2" data-aos="fade-up"/>
+             <thead>
+             </thead>
+             <tbody>
+               <tr data-aos="fade-up" >
+                 <th scope="row">Wohneinheiten:</th>
+                 <td>32</td>
+               </tr>
+               <tr data-aos="fade-up" data-aos-delay="100">
+                 <th scope="row">Flächen:</th>
+                 <td>45-116 m²</td>
+               </tr>
+               <tr data-aos="fade-up" data-aos-delay="200">
+                 <th scope="row">Abschreibung:</th>
+                 <td>75%</td>
+               </tr>
+               <tr data-aos="fade-up" data-aos-delay="300">
+                 <th scope="row">Kaufpreis:</th>
+                 <td>161.249 - 415.749 €</td>
+               </tr>
+             </tbody>
+           </table>
+           <div class="container-contact100-form-btn project-button" data-aos="fade-up" data-aos-delay="400">
+             <button type="submit" class="contact100-form-btn" onclick="window.location.href = '/angebot-anfordern/kaiser-und-dicke/';">
+                 Jetzt Anfragen
+             </button>
+             <button type="submit" style="margin-left: 30px;background-color: #fff;color: #000;" class="contact100-form-btn" onclick="window.location.href = '/kaiser-dicke/';">
+                Mehr erfahren
+            </button>
+          </div>
+     </div>
+ </div>
+</div>
+    </div>
+<div class="container-fluid dsnone2 pad-zero">
+
+ <img src="{% static "denkmalgeschutztelofts/images/kaiser3.png" %}" class="img-fluid slider-image">
+
+</div>
+<div class="dsnone2">
+    <div class="Rtable Rtable--2cols">
+
+        <div class="Rtable-cell" style="text-align: left;font-weight: bolder">Wohneinheiten:</div>
+        <div class="Rtable-cell" style="text-align: right">32</div>
+
+        <div class="Rtable-cell" style="text-align: left;font-weight: bolder">Flächen:</div>
+        <div class="Rtable-cell" style="text-align: right">45-116 m²</div>
+
+        <div class="Rtable-cell" style="text-align: left;font-weight: bolder">Abschreibung:</div>
+        <div class="Rtable-cell" style="text-align: right">75%</div>
+
+        <div class="Rtable-cell" style="text-align: left;font-weight: bolder">Kaufpreis:</div>
+        <div class="Rtable-cell" style="text-align: right; font-size: 16px">161.249 - 415.749 €</div>
+
+    </div>
+    <div class="row" style="margin-bottom: 2em">
+        <div class="col-6" style="padding: 0">
+            <button type="submit" style="min-width: 140px;margin-left: 38px;margin-top: 2em;padding: 0;" class="contact100-form-btn" onclick="window.location.href = '/angebot-anfordern/kaiser-und-dicke/';">
+                 Jetzt Anfragen
+            </button>
+        </div>
+        <div class="col-6" style="padding: 0">
+            <button type="submit" style="min-width: 140px;background-color: #fef2da;color: #000; margin: 2em 0 0 25px; padding: 0; border: 1px solid #000; border-radius: 2px" class="contact100-form-btn btn-none" onclick="window.location.href = '/kaiser-dicke/';">
+                Mehr erfahren
+            </button>
+        </div>
+    </div>
+</div>
+    
+        <!-- <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h1>Neueste Beiträge
+                    </h1>
+                </div>
+            </div>
+            {% if posts %}
+                <div class="row">
+                    {% for post in posts %}
+                        <div class="col-lg-4 mb-4">
+                            <div class="entry2">
+                                <a href="{% url "blog:post" post.slug %}">
+                                    {% if post.cover_image %}
+                                        <img src="{{ post.cover_image.url }}" alt="Image"
+                                             class="img-fluid" style="height: 300px;width: 450px;object-fit:cover;">
+                                    {% else %}
+                                        <img src="{% static "blog/images/img_1.jpg" %}" alt="Image"
+                                             class="img-fluid" style="height: 200px; max-width: 200px;">
+                                    {% endif %}
+                                </a>
+                                <div class="excerpt" style="background-color: #fff;margin-top: -30px;">
+                                    <h2 style="color: #c9a877;">
+                                        <a href="{% url "blog:post" post.slug %}" style="color: #c9a877;">{{ post.title }}</a>
+                                    </h2>
+                                    <div class="post-meta align-items-center text-left clearfix">
+                                        <span class="d-inline-block mt-1">By <a
+                                                href="#">{{ post.first_name }} {{ post.last_name }}</a></span>
+                                        <span>&nbsp;-&nbsp;{{ post.date|date:"SHORT_DATE_FORMAT" }}</span>
+                                    </div>
+
+                                    <p>{{ post.content|safe|truncatechars_html:128 }}</p>
+                                    <p><a href="{% url "blog:post" post.slug %}">Read
+                                        More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div> -->
+
+        
+{% endblock %}
+
+{% block priority_js %}
+    <script src="{% static "blog/js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "blog/js/jquery-migrate-3.0.1.min.js" %}"></script>
+    <script src="{% static "blog/js/jquery-ui.js" %}"></script>
+    <script src="{% static "blog/js/popper.min.js" %}"></script>
+    <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "blog/js/owl.carousel.min.js" %}"></script>
+    <script src="{% static "blog/js/jquery.stellar.min.js" %}"></script>
+    <script src="{% static "blog/js/jquery.countdown.min.js" %}"></script>
+    <script src="{% static "blog/js/jquery.magnific-popup.min.js" %}"></script>
+    <script src="{% static "blog/js/bootstrap-datepicker.min.js" %}"></script>
+    <script src="{% static "blog/js/aos.js" %}"></script>
+
+    <script src="{% static "blog/js/main.js" %}"></script>
+{% endblock %}

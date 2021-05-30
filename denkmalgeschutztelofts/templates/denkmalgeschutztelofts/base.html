@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+{% load webp_converter %}
+{% load static %}
+<html lang="de-DE">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="1OAi1TiFVViAWuhEuWshU4dIUNhPOpNa0ZH5nJcn">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- FONT-AWESOME -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="{% static "denkmalgeschutztelofts/css/intlTelInput.css" %}">
+    <link href="{% static 'denkmalgeschutztelofts/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "denkmalgeschutztelofts/css/swiper.min.css" %}">
+    {% block priority_css %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static "denkmalgeschutztelofts/scss/loader.min.css" %}">
+    <link rel="stylesheet" href="{% static "denkmalgeschutztelofts/css/newsletter.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "scheduler/css/modal.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "denkmalgeschutztelofts/css/carousel.css" %}">
+    <link href="{% static "denkmalgeschutztelofts/css/main.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap" rel="stylesheet">
+    <!-- ICON -->
+    <link rel="SHORTCUT ICON"
+          href="{% static_webp "denkmalgeschutztelofts/images/industry-logo.png" %}">
+
+    <meta name="description"
+          content="Denkmalgeschützte Lofts | Wir ermöglichen Ihnen den Zugang zu den exklusivsten Denkmalprojekten Deutschlands.">
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+
+    <!-- Hotjar Tracking Code for https://denkmalgeschütztelofts.de -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {hjid: 2042317, hjsv: 6};
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZDPR7NP2B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZZDPR7NP2B');
+</script>
+</head>
+
+<body>
+<!-- Loading animation -->
+<div class="loader">Laden...</div>
+<!-- Success Modal -->
+<!-- Success Modal -->
+<div id="success-modal" class="modal hide fade">
+    <div class="modal-dialog modal-confirm modal-sm">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center" style="background-color: #c9a877;">
+                <h4 style="color: #000;">Vielen Dank für Ihre Anfrage.
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >
+                    &times;
+                </button>
+            </div>
+            <div class="modal-content__body text-center" style="padding-top: 10px;">
+                <div class="icon-box" style="border:5px solid #28a745">
+                    <i class="material-icons" style="color: #28a745">&#xE876;</i>
+                </div>
+                
+                <p style="text-align: center"><br>Ihre Nachricht wurde übermittelt. Wir melden uns so bald wie möglich bei Ihnen.</p>
+                    
+                <a href="{% url "denkmalgeschutztelofts:index" %}" target="_parent">
+                    
+                    <button class="btn btn-success" style="border-radius: 4px;">
+                        <div class="text-center">
+                            <span>Zurück zur </span><span>Startseite</span><span><i
+                                class="material-icons">&#xE5C8;</i></span>
+                        </div>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "denkmalgeschutztelofts/header.html" %}
+{% block body %}
+{% endblock %}
+{% include "denkmalgeschutztelofts/footer.html" %}
+{% if successful_submit %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#success-modal").modal('show');
+    });
+</script>
+{% endif %}
+</body>
+
+<!-- Bootstrap 4 querys -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<script src="{% static "denkmalgeschutztelofts/js/carousel.js" %}"></script>
+{% block priority_js %}{% endblock %}
+<!-- SCRIPTS ext -->
+<script src="{% static "denkmalgeschutztelofts/js/parsley.min.js" %}"></script>
+<script src="{% static "denkmalgeschutztelofts/js/megaTracker.js" %}"></script>
+<script src="{% static "denkmalgeschutztelofts/product-sheet/form/product-sheet.js" %}"
+        async></script>
+<!-- slidebar menu form -->
+<script src="{% static "denkmalgeschutztelofts/js/slidebars.js" %}"></script>
+<script src="{% static "denkmalgeschutztelofts/js/scripts.js" %}"></script>
+<script src="{% static "denkmalgeschutztelofts/js/inputmask.js" %}"></script>
+<script src="{% static "denkmalgeschutztelofts/js/inputmask.binding.js" %}"></script>
+<script>
+    window.addEventListener("DOMContentLoaded", function (){
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden";
+    });
+</script>
+
+<script>
+    AOS.init();
+</script>
+
+<script>
+    $('#form-kontakt input[type=text]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld aus!');  
+    }
+});
+</script>
+<script>
+    $('#form-kontakt input[type=tel]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld mit Zahlen korrekt aus!');
+    }
+});
+</script>
+<script>
+    $('#formk input[type=tel]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld mit Zahlen korrekt aus!');
+    }
+});
+</script>
+<script>
+    $('#form-kontakt input[type=checkbox]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte kreuzen Sie dieses Kästchen an, wenn Sie fortfahren möchten.');  
+    }
+});
+</script>
+<script>
+    $('#formk input[type=checkbox]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte kreuzen Sie dieses Kästchen an, wenn Sie fortfahren möchten.');  
+    }
+});
+</script>
+<script>
+    $('#form1 input[type=text]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld aus!');  
+    }
+});
+</script>
+
+<script>
+    $('#form1 input[type=checkbox]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte kreuzen Sie dieses Kästchen an, wenn Sie fortfahren möchten.');  
+    }
+});
+</script>
+<script>
+    $('#formk input[type=email]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld aus!');  
+    }
+});
+</script>
+<script>
+    $('#formk input[type=text]').on('change invalid', function() {
+    var textfield = $(this).get(0);
+    
+    // 'setCustomValidity not only sets the message, but also marks
+    // the field as invalid. In order to see whether the field really is
+    // invalid, we have to remove the message first
+    textfield.setCustomValidity('');
+    
+    if (!textfield.validity.valid) {
+      textfield.setCustomValidity('Bitte füllen Sie dieses Feld aus!');  
+    }
+});
+</script>
+<script>
+    jQuery(document).ready(function () {
+        var offset = 220;
+        var duration = 500;
+        jQuery(window).scroll(function () {
+            if (jQuery(this).scrollTop() > offset) {
+                jQuery('.back-to-top').fadeIn(duration);
+            } else {
+                jQuery('.back-to-top').fadeOut(duration);
+            }
+        });
+
+        jQuery('.back-to-top').click(function (event) {
+            event.preventDefault();
+            jQuery('html, body').animate({
+                scrollTop: 0
+            }, duration);
+            return false;
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    $ = jQuery.noConflict();
+    $(document).ready(function () {
+        $(".slideToggle").click(function () {
+            $(this).next().slideToggle();
+            var id = $(this).parents(".product-thumb").attr('id');
+            $('.form_enquiry').prepend('<input type="hidden" name="id_product" value="' + id + '"></input>');
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    //close divs pop up pag de produto
+    $(document).on('click', '.close-price-wrapper2', function (event) {
+        event.preventDefault();
+        $(".product-info-cta").click();
+    });
+    $('.product-info-cta').click(
+        function () {
+            $('.wrapper-request-price').css('display', 'none');
+        });
+</script>
+
+<script>
+    jQuery('.product-info-cta').click(function () {
+        SnapEngage.openProactiveChat(true, true);
+    });
+
+    jQuery('.product-price-cta').click(function () {
+        SnapEngage.openProactiveChat(true, true);
+    });
+</script>
+
+
+<!-- change icon menu -->
+<script type="text/javascript">
+    jQuery('#changeopen').click(function () {
+        jQuery('#changeopen').addClass('d-none');
+        jQuery('#changeclose').removeClass('d-none');
+    })
+</script>
+
+<!-- change icon menu -->
+<script type="text/javascript">
+    jQuery('#changeclose').click(function () {
+        jQuery('#changeopen').removeClass('d-none');
+        jQuery('#changeclose').addClass('d-none');
+    })
+</script>
+
+<!-- page opacity -->
+<script>
+    $('.js-toggle-right-slidebar').click(function () {
+        $('.page-opacity').fadeIn();
+    });
+
+    $('.js-close-right-slidebar').click(function () {
+        $('.page-opacity').fadeOut();
+    });
+</script>
+
+<!-- imgs not visible -->
+<script type="text/javascript">
+    function init() {
+        var imgDefer = document.getElementsByTagName('img');
+        for (var i = 0; i < imgDefer.length; i++) {
+            if (imgDefer[i].getAttribute('data-src')) {
+                imgDefer[i].setAttribute('srcset', imgDefer[i].getAttribute('data-src'));
+            }
+        }
+    }
+
+    window.onload = init;
+</script>
+
+<script>
+    $(window).on('load', function () {
+        if ($(window).width() < 991) {
+            $('.imgSize').css('height', ($(window).height() - $('.lower-nav').height() - $('.upper-nav').height()));
+        } else {
+            $('.imgSize').css('height', ($(window).height() - $('.lower-nav').height() - $('.upper-nav').height()));
+        }
+    });
+
+
+    $(window).resize(function () {
+        if ($(window).width() < 991) {
+            $('.imgSize').css('height', ($(window).height() - $('.lower-nav').height() - $('.upper-nav').height()));
+        } else {
+            $('.imgSize').css('height', ($(window).height() - $('.lower-nav').height() - $('.upper-nav').height()));
+        }
+    });
+</script>
+</html>
